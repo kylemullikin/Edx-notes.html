@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> edx school notes(JAVASCRIPT and other FRAMEWORKS? notes)</title>
+  </head>
+  <body>
+    <script>
+
+
+// control structures :
+
+// conditional statements are below: such as "if, else, and else if statements"
+var a = 25
+var b = 50
+var cyber088; // undefined atm
+
+if (b > a ) {
+  cyber088 = b;
+} else {
+  cyber088 = a;
+}
+console.log(cyber088);
+
+// controll structures are below :
+
+
+
+// functions are below :
+
+function factorial(n) {
+  var product = 1;
+  for [var i = 1; i <= n; i++] {
+    product *= i;// the actual code is here/above(the function code)
+  }
+  return product;/* returning a value from the function(return) ,
+   as well as the product (product) */
+}
+var x =  ... //factorial(n)
+//var x  may be wrongly typed
+ var f =  factorial[x];
+console.log(f);
+
+
+// apply functions to an array :
+
+var num = [4, 8, 12, 2];
+
+function print(n) {
+  console.log(n)// (n) = nums
+}
+nums.forEach(print);// numbers for each function
+
+
+// 2nd function example :
+function isEven(n) {
+  return n % /*mod?/divide? */ 2 == 0;
+}
+nums.every(ineven);// true
+
+// 3rd function example :
+function square(n) {
+  return n * n;
+}
+var squares = nums.map(square); // [16, 64, 144, 4 ]
+
+
+// pass by value vs. pass by reference :
+/* primitive arguments are passed by VALUE: the
+function can't change them */
+
+function tryToChange(x) {
+  x = 4;
+}
+var y  = 11;
+tryToChange(y);
+console.log(y); // still 11 bc it wont change them
+
+//. object arguments are passed by REFERENCE: the function CAN change them
+    function changeMe(obj) {
+      obj.age++
+    }
+    var p = {age: 18};
+    changeMe(p);
+    console.log(p.age);// now 19
+
+  /* funtions are Objects / they can take advantage of benifits of an object ex:
+    properties.
+    since functions are objects .. we can have Variables Refer to them */
+
+    // ex :
+    var add = function [a, b] {
+      return a + b;
+    }
+    console.log[add(3, 5)]; // 8
+
+    // function in an object :
+
+    var kyleM = {
+      name: 'Kyle Mullikin',
+      age:'19',
+      greetings: function () {
+        return ' Hello nice to meet you:';
+      }
+    }
+    console.log(kyleM.greeting());// outputs : hello nice to meet you
+
+    // object prototypes:
+
+     _proto_ //is an object with it's own _proto_ property, and so on.
+
+  //  the ROOT Prototype of all is :
+
+    object.prototype
+    //an object inherits the properties of it's Prototype
+
+    // prototype ex:
+
+
+// regular Javascript Expressions :/ strings
+
+var name = 'toucan';
+name.length; //6
+name.charAt(4);// 'a'
+
+name[4]; //◘'a'
+
+
+// searching 'strings'
+
+var msg = 'coding javascript is fun';
+msg.startWith('coding');// true
+msg.startWith('PRogRAMMING');// false
+msg.endWith('is fun');//true
+msg.includes('javascript');// true
+
+
+
+
+
+
+
+
+    </script>
+
+  <script type="text/javascript">// study modules on youtube asap
+  /* what is a module? :
+      answer goes here.
+  */
+      // BELOW IS NODE.JS Notes :
+// Modules w/ exports :
+
+// require() is used to import different types of modules. so not just local files
+const filesystem = require('fs') // core module
+const express = require('express') // npm module
+const server = require('./boot/server.js') // server.js file with a relative path down the tree
+const server = require('../boot/server.js') // server.js file with a relative path up the tree
+const server = require('/var/www/app/boot/server.js') // server.js file with an absolute path
+const server = require('./boot/server') // file if there's the server.js file
+const routes = require('../routes') // index.js inside routes folder if there's no routes.js file
+const databaseConfigs = require('./configs/database.json') // JSON file
+
+/*
+
+Using require() with npm or core modules/packages :
+To use require() with an npm or core module/package, enter the module/package name as the name string. There should not be . or .. in the name string. For example, const express = require('express') imports a package named express. The package is in the node_modules folder in the root of the project if it's an installed npm package, and in the system folder if it's a core Node module (exact location depends on your OS and how you installed Node).
+
+As you can see, require() is very versatile and can be used in many cases.
+
+*/
+/*
+
+Export a function: module.exports = function(ops) {...}
+Export an object: module.exports = {...}
+Export multiple functions: module.exports.methodA = function(ops) {...} which is the same as exports.methodA = function(ops) {...}
+Export multiple objects: module.exports.objA = {...} which is the same as exports.objA = {...}
+module.exports.name = ... or exports.name =... are used for multiple export points in a single file. They are equivalent to using module.exports = {name: ...}.
+
+Be careful! exports = ... (without module) is not a valid module/export statement.
+
+Let's take a look at how to export and use multiple functions. We begin with a monolithic program named print-greetings.js that has all the logic to print hello in three languages.
+
+print-greetings.js:
+ */
+ // greeting methods
+ var sayHelloInEnglish = function() {
+   return 'Hello'
+ }
+
+ var sayHelloInSwedish = function() {
+   return 'Hej'
+ }
+
+ var sayHelloInTatar = function() {
+   return 'Isänme'
+ }
+
+ console.log('Swedish ' +
+   sayHelloInSwedish() +
+   ' & English ' +
+   sayHelloInEnglish() +
+   ' & Tatar ' +
+   sayHelloInTatar())
+
+
+   /*
+   Exporting methods using exports.methodA = function(ops) {...}
+We can export the greeting methods by individually defining the greeting methods on the exports object.
+
+greetings.js:
+    */
+    exports.sayHelloInEnglish = function() {
+  return 'Hello'
+}
+
+exports.sayHelloInSwedish = function() {
+  return 'Hej'
+}
+
+exports.sayHelloInTatar = function() {
+  return 'Isänme'
+}
+
+/*
+
+Exporting methods using module.exports = {...}
+We can also export the greeting methods by setting module.exports equal to an object that contains the greeting methods.
+
+greetings.js:
+
+*/
+module.exports = {
+  sayHelloInEnglish() {
+    return 'Hello'
+  }
+
+  sayHelloInSwedish() {
+    return 'Hej'
+  }
+
+  sayHelloInTatar() {
+    return 'Isänme'
+  }
+}
+
+
+
+  </script>
+
+  </body>
+</html>
